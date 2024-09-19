@@ -1,4 +1,4 @@
-package study;
+package study.baseballPlay.m0;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

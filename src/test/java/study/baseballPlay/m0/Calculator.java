@@ -1,4 +1,4 @@
-package study;
+package study.baseballPlay.m0;
 
 public class Calculator {
     int add(int i, int j){
