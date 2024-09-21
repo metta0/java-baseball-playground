@@ -1,20 +1,31 @@
 package study.baseballPlay.m2;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.DisplayName;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.ArrayList;
 
-public class BaseballGame {
+public class BaseballGameTest {
     ArrayList<Integer> answer;
     ArrayList<Integer> trialNumber;
     BaseballGameScore score;
     InputView inputView;
     ResultView resultView;
 
-    BaseballGame(){
+    BaseballGameTest(){
         score = new BaseballGameScore();
         inputView = new InputView();
         resultView = new ResultView();
     }
 
+    @Test
     public void runGame(){
         setupGame();
         while(isGameOver() == false){
