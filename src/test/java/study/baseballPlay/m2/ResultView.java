@@ -1,19 +1,17 @@
 package study.baseballPlay.m2;
 
-import java.util.Scanner;
-
 public class ResultView {
 
     public void printScore(BaseballGameScore score){
-        if(score.ball != 0 && score.strike != 0){
-            System.out.printf("%d볼 %d스트라이크\n", score.ball, score.strike);
+        if(score.isBallAndStrikeExists()){
+            System.out.printf("%d볼 %d스트라이크\n", score.getBallCount(), score.getStrikeCount());
         }
-        else if(score.ball !=0){
-            System.out.printf("%d볼\n", score.ball);
-        }else if(score.strike !=0){
-            System.out.printf("%d스트라이크\n", score.strike);
-        }else if(score.nothing){
-            System.out.printf("낫싱\n", score.strike);
+        else if(score.isBallExists()){
+            System.out.printf("%d볼\n", score.getBallCount());
+        }else if(score.isStikeExists()){
+            System.out.printf("%d스트라이크\n", score.getStrikeCount());
+        }else if(score.isNothing()){
+            System.out.printf("낫싱\n", score.getStrikeCount());
         }
     }
 

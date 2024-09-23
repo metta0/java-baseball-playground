@@ -3,11 +3,11 @@ package study.baseballPlay.m2;
 import java.util.ArrayList;
 
 public class BaseballGame {
-    ArrayList<Integer> answer;
-    ArrayList<Integer> trialNumber;
-    BaseballGameScore score;
-    InputView inputView;
-    ResultView resultView;
+    private ArrayList<Integer> answer;
+    private ArrayList<Integer> trialNumber;
+    private BaseballGameScore score;
+    private InputView inputView;
+    private ResultView resultView;
 
     BaseballGame(){
         score = new BaseballGameScore();
@@ -36,8 +36,8 @@ public class BaseballGame {
     }
     
     private void setRandomNumber(){
-        int randomNumber = (int)(Math.random()*10);
-        if(!answer.contains(randomNumber) && randomNumber != 0){
+        int randomNumber = (int)(Math.random()*9)+1;
+        if(!answer.contains(randomNumber)){
             answer.add(randomNumber);
         }
     }
@@ -47,7 +47,7 @@ public class BaseballGame {
     }
 
     private boolean isGameOver(){
-        return score.strike == 3;
+        return score.isThreeStrike();
     }
     
     private void gameRound(){
@@ -73,20 +73,18 @@ public class BaseballGame {
 
     private void countStrike(int index){
         if(answer.get(index) == trialNumber.get(index)){
-            score.strike += 1;
+            score.strike();
         }
     }
 
     private void countBall(int index){
         if(answer.contains(trialNumber.get(index)) && (answer.get(index) != trialNumber.get(index)) ){
-            score.ball += 1;
+            score.ball();
         }
     }
     
     private void countNothing(){
-        if(score.strike == 0 && score.ball == 0){
-            score.nothing = true;
-        }
+        score.countIsNothing();
     }
 
     private void printScore(){
@@ -96,7 +94,7 @@ public class BaseballGame {
     private void endOrRestartGame(){
         resultView.askToContinue();
 
-        if(inputView.isContinue()){
+        if(inputView.isGameContinue()){
             runGame();
         }
     }

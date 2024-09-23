@@ -19,7 +19,7 @@ public class InputView {
         return trialNumber;
     }
 
-    public boolean isContinue(){
+    public boolean isGameContinue(){
         Scanner sc = new Scanner(System.in);
         int input = sc.nextInt();
         
