@@ -34,5 +34,17 @@ public class Ball {
         && this.getValue() != opponentsBall.getValue();
 	}
 
+    public BallStatus play(Ball opponentsBall) {
+        
+        if(this.isStrike(opponentsBall)){
+            return BallStatus.STRIKE;
+        }
+        else if(this.isBall(opponentsBall)){
+            return BallStatus.BALL;
+        }        
+        
+        return BallStatus.NOTHING;
+    }
+
 
 }

@@ -2,7 +2,8 @@ package study.baseballPlay.m3;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
+import static org.assertj.core.api.Assertions.assertThat;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -25,21 +26,18 @@ public class BallTest {
 
     @Test
     public void isStirkeTest(){
-        assertFalse(ball1.isStrike(ball2));
-        assertTrue(ball1.isStrike(ball3));
+        assertThat(ball1.play(ball3)).isEqualTo(BallStatus.STRIKE);
     }
 
     @Test
     public void isBallTest(){
-        assertTrue(ball1.isBall(ball4));
-        assertFalse(ball1.isBall(ball2));
-        assertFalse(ball1.isBall(ball5));
+        assertThat(ball1.play(ball4)).isEqualTo(BallStatus.BALL);
     }
 
     @Test
     public void isNothingTest(){
-        assertTrue(ball1.isNothing(ball5));
-        assertFalse(ball1.isNothing(ball4));
+        assertThat(ball1.play(ball5)).isEqualTo(BallStatus.NOTHING);
+        
     }
         
 }
