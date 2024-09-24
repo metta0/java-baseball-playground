@@ -1,6 +1,5 @@
 package study.baseballPlay.m3;
 
-import java.util.function.BooleanSupplier;
 
 public class Ball {
     private int position;
@@ -20,19 +19,31 @@ public class Ball {
     }
 
 	public Boolean isStrike(Ball opponentsBall) {
-        return this.getPosition() == opponentsBall.getPosition() 
-        && this.getValue() == opponentsBall.getValue();
+        return matchesExactly(opponentsBall);
 	}
 
 	public Boolean isBall(Ball opponentsBall) {
-		return this.getPosition() != opponentsBall.getPosition() 
-        && this.getValue() == opponentsBall.getValue();
+		return matchesValueOnly(opponentsBall);
 	}
 
 	public Boolean isNothing(Ball opponentsBall) {
-		return this.getPosition() != opponentsBall.getPosition() 
+		return matchesNothing(opponentsBall);
+    }
+
+    private Boolean matchesExactly(Ball opponentsBall){
+        return this.getPosition() == opponentsBall.getPosition() 
+        && this.getValue() == opponentsBall.getValue();
+    }
+
+    private Boolean matchesValueOnly(Ball opponentsBall){
+        return this.getPosition() != opponentsBall.getPosition() 
+        && this.getValue() == opponentsBall.getValue();
+    }
+
+    private Boolean matchesNothing(Ball opponentsBall){
+        return this.getPosition() != opponentsBall.getPosition() 
         && this.getValue() != opponentsBall.getValue();
-	}
+    }
 
     public BallStatus play(Ball opponentsBall) {
         

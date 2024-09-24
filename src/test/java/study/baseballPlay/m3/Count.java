@@ -18,12 +18,24 @@ public class Count {
         }
     }
 
+    public void hitStrike(){
+        strike+=1;
+    }
+
+    public void hitBall(){
+        ball+=1;
+    }
+
+    public void hitNothing(){
+        nothing = true;
+    }
+
     public int getNumberOfStrikes(){
         return strike;
     }
     
     public int getNumberOfBalls(){
-        return strike;
+        return ball;
     }
 
     public boolean isNothing(){

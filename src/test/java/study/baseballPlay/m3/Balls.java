@@ -5,22 +5,45 @@ import java.util.List;
 
 public class Balls {
     private ArrayList<Ball> balls;
-    private Count count;
+    static private Count count;
 
     Balls(List<Integer> values){
         balls = new ArrayList<Ball>();
+        count = new Count();
+
         for(int i=0; i< values.size(); i++){
             balls.add(new Ball(i, values.get(i)));
         }
     }
 
-    public void play(ArrayList<Ball> opponentsBalls){
-        return balls.stream()
-        .map(answer -> answer.play(opponentsBalls))
-        .filter(status -> status != BallStatus.NOTHING)
-        .findFirst()
-        .orElse(BallStatus.NOTHING);
+    private ArrayList<Ball> getBalls(){
+        return balls;
+    }
 
+    public static Count play(Balls balls1, Balls balls2){
+        ArrayList<Ball> myBalls = balls1.getBalls();
+        ArrayList<Ball> opponentBalls = balls2.getBalls();
+        
+        for(Ball ball : myBalls){
+            for(Ball oppenentsBall : opponentBalls){
+                if(ball.play(oppenentsBall) == BallStatus.STRIKE){
+                    count.hitStrike();
+                }
+                else if(ball.play(oppenentsBall) == BallStatus.BALL){
+                    count.hitBall();
+                }
+            }
+        }
+        if(noStrikesOrBalls()){
+            count.hitNothing();
+        }
+
+        return count;
+    }
+
+    private static boolean noStrikesOrBalls(){
+        return count.getNumberOfStrikes() == 0 
+               && count.getNumberOfBalls() ==0;
     }
     
 }
