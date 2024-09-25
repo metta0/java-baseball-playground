@@ -10,7 +10,7 @@ public class InputView {
         scanner = new Scanner(System.in);
     }
 
-    public ArrayList<Integer> get3NumbersFromUser(){
+    public ArrayList<Integer> getNumbersFromUser(){
         ArrayList<Integer> trialNumber = new ArrayList<>();
 
         System.out.printf("숫자를 입력해 주세요 : ");
@@ -21,6 +21,14 @@ public class InputView {
             trialNumber.add(Integer.parseInt(num));
         }
         return trialNumber;
+    }
+
+    public boolean isGameContinue(){
+        int input = Integer.parseInt(scanner.nextLine());
+        
+        if(input == 1)
+            return true;
+        return false;
     }
 
 }

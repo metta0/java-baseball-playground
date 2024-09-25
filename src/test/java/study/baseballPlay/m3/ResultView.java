@@ -8,10 +8,12 @@ public class ResultView {
         if(count.isBallExists()){
             answer.append(count.getNumberOfBall());
             answer.append("볼 ");
-        }else if(count.isStrikeExists()){
+        }
+        if(count.isStrikeExists()){
             answer.append(count.getNumberOfStrike());
             answer.append("스트라이크");
-        }else if(count.isNothing()){
+        }
+        if(count.isNothing()){
             answer.append("낫싱");
         }
 

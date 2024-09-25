@@ -49,4 +49,11 @@ public class Count {
     public boolean isNothing(){
         return nothing;
     }
+
+    public boolean isRoundNotOver(){
+        return !isRoundOver();
+    }
+    public boolean isRoundOver(){
+        return strike == 3;
+    }
 }

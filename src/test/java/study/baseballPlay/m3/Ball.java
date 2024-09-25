@@ -1,7 +1,5 @@
 package study.baseballPlay.m3;
 
-import java.lang.Exception;
-
 public class Ball {
     private int position;
     private int value;
