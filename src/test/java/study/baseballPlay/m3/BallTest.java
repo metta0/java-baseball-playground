@@ -1,6 +1,7 @@
 package study.baseballPlay.m3;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,8 +18,8 @@ public class BallTest {
         ball1 = new Ball(1,1);
         ball2 = new Ball(1,2);
         ball3 = new Ball(1,1);
-        ball4 = new Ball(4,1);
-        ball5 = new Ball(3,4);
+        ball4 = new Ball(0,1);
+        ball5 = new Ball(2,4);
         
     }
 
@@ -36,6 +37,18 @@ public class BallTest {
     public void isNothingTest(){
         assertThat(ball1.play(ball5)).isEqualTo(BallStatus.NOTHING);
         
+    }
+
+    @Test
+    public void notValidPositionOrValueTest(){
+
+        assertThatThrownBy(() -> {
+            ball1 = new Ball(3,4);
+        }).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("Position");
+
+        assertThatThrownBy(() -> {
+            ball1 = new Ball(2,10);
+        }).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("Value");
     }
         
 }

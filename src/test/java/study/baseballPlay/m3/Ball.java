@@ -1,20 +1,27 @@
 package study.baseballPlay.m3;
 
+import java.lang.Exception;
 
 public class Ball {
     private int position;
     private int value;
 
     Ball(int position, int value){
+        if(position > 2){
+            throw new IllegalArgumentException("Position" + value +"must be < 3");
+        }
+        if(value<1 || value>9){
+            throw new IllegalArgumentException("Value" + value +"must be between 1 and 9");
+        }
         this.position = position;
         this.value = value;
     }
 
-    public Object getPosition() {
+    public int getPosition() {
         return position;
     }
 
-    public Object getValue() {
+    public int getValue() {
         return value;
     }
 
