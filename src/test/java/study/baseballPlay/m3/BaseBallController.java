@@ -10,7 +10,7 @@ public class BaseBallController {
     public List<Integer> set3RandomNumbers() {
         Set<Integer> set = new HashSet<>();
         while(set.size() != 3){
-            set.add((int)(Math.random()*9));
+            set.add((int)(Math.random()*9)+1);
         }
         return new ArrayList<>(set);
     }
