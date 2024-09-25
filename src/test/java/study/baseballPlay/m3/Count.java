@@ -17,6 +17,14 @@ public class Count {
             nothing = true;
         }
     }
+    
+    public boolean isStrikeExists(){
+        return strike != 0;
+    }
+    
+    public boolean isBallExists(){
+        return ball != 0;
+    }
 
     public void hitStrike(){
         strike+=1;
@@ -30,11 +38,11 @@ public class Count {
         nothing = true;
     }
 
-    public int getNumberOfStrikes(){
+    public int getNumberOfStrike(){
         return strike;
     }
     
-    public int getNumberOfBalls(){
+    public int getNumberOfBall(){
         return ball;
     }
 

@@ -51,8 +51,8 @@ public class Balls {
     }
 
     private static boolean noStrikesOrBalls(){
-        return count.getNumberOfStrikes() == 0 
-               && count.getNumberOfBalls() ==0;
+        return count.getNumberOfStrike() == 0 
+               && count.getNumberOfBall() ==0;
     }
     
 }
